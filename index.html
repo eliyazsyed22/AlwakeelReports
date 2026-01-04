@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlwakeelBot Reports</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .logo { font-size: 5em; animation: pulse 1s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        h1 { font-size: 2.5em; color: #ff6b35; margin: 20px 0; }
+        .subtitle { color: #ffd700; letter-spacing: 3px; margin-bottom: 40px; }
+        .year-section { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; margin: 20px 0; width: 100%; max-width: 600px; }
+        .year-title { font-size: 1.5em; color: #00d4ff; margin-bottom: 20px; }
+        .months { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .month-link {
+            display: block;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .month-link:hover { background: #ff6b35; transform: translateY(-3px); }
+        .footer { margin-top: 40px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="logo">⚡🚀</div>
+    <h1>AlwakeelBot Reports</h1>
+    <div class="subtitle">AUTOMATED TRADING REPORTS</div>
+    
+    <div class="year-section">
+        <div class="year-title">📅 2026</div>
+        <div class="months">
+            <a href="2026/01-JAN/" class="month-link">Jan</a>
+            <a href="2026/02-FEB/" class="month-link">Feb</a>
+            <a href="2026/03-MAR/" class="month-link">Mar</a>
+            <a href="2026/04-APR/" class="month-link">Apr</a>
+            <a href="2026/05-MAY/" class="month-link">May</a>
+            <a href="2026/06-JUN/" class="month-link">Jun</a>
+            <a href="2026/07-JUL/" class="month-link">Jul</a>
+            <a href="2026/08-AUG/" class="month-link">Aug</a>
+            <a href="2026/09-SEP/" class="month-link">Sep</a>
+            <a href="2026/10-OCT/" class="month-link">Oct</a>
+            <a href="2026/11-NOV/" class="month-link">Nov</a>
+            <a href="2026/12-DEC/" class="month-link">Dec</a>
+        </div>
+    </div>
+    
+    <div class="footer">⚡🚀 Trade Smarter, Not Harder</div>
+</body>
+</html>
