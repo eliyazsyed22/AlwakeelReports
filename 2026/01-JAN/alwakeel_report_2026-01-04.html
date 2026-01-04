@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlWakeel Bot - Daily Report</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header { text-align: center; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 15px; margin-bottom: 20px; }
+        .logo { font-size: 6em; animation: pulse 1s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        h1 { font-size: 2.5em; color: #ff6b35; }
+        .tagline { color: #ffd700; letter-spacing: 3px; margin-top: 10px; }
+        .date { color: #888; margin-top: 15px; font-size: 1.2em; }
+        .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 20px 0; }
+        .card { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; text-align: center; }
+        .card .icon { font-size: 2em; }
+        .card .value { font-size: 2em; font-weight: bold; color: #00d4ff; }
+        .card .label { color: #888; }
+        .strategies { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
+        .pill { padding: 12px 25px; border-radius: 50px; font-weight: bold; }
+        .pill.support { background: linear-gradient(90deg, #11998e, #38ef7d); }
+        .pill.breakout { background: linear-gradient(90deg, #fc4a1a, #f7b733); }
+        .pill.momentum { background: linear-gradient(90deg, #667eea, #764ba2); }
+        .footer { text-align: center; margin-top: 30px; color: #666; }
+        .test-banner { background: #ff6b35; padding: 10px; text-align: center; border-radius: 10px; margin-bottom: 20px; color: #000; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="test-banner">✅ PUBLIC REPO TEST - HTML Preview Working!</div>
+        <div class="header">
+            <div class="logo">⚡🚀</div>
+            <h1>AlWakeel Bot</h1>
+            <div class="tagline">AUTOMATED TRADING ENGINE</div>
+            <div class="date">📅 Sunday, January 04, 2026 | 08:12:15 IST</div>
+        </div>
+        <div class="cards">
+            <div class="card"><div class="icon">📈</div><div class="value">2</div><div class="label">Buy Orders</div></div>
+            <div class="card"><div class="icon">📉</div><div class="value">0</div><div class="label">Sell Orders</div></div>
+            <div class="card"><div class="icon">💰</div><div class="value">₹4.2L</div><div class="label">Buy Value</div></div>
+            <div class="card"><div class="icon">📊</div><div class="value" style="color:#00ff88;">₹0</div><div class="label">P&L</div></div>
+        </div>
+        <div class="strategies">
+            <div class="pill support">🎯 SUPPORT: 1</div>
+            <div class="pill breakout">🚀 BREAKOUT: 1</div>
+            <div class="pill momentum">⚡ MOMENTUM: 0</div>
+        </div>
+        <div class="footer">
+            <p style="font-size: 1.3em;">⚡🚀 AlwakeelBot - Trade Smarter, Not Harder</p>
+            <p style="margin-top: 10px;">This is a TEST from public repo</p>
+        </div>
+    </div>
+</body>
+</html>
