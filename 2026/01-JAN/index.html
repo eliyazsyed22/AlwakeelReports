@@ -6,13 +6,7 @@
     <title>January 2026 - AlwakeelBot Reports</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #eee;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #eee; min-height: 100vh; padding: 40px 20px; }
         .container { max-width: 800px; margin: 0 auto; }
         .header { text-align: center; margin-bottom: 40px; }
         .logo { font-size: 4em; }
@@ -20,30 +14,13 @@
         .back-link { color: #00d4ff; text-decoration: none; }
         .back-link:hover { text-decoration: underline; }
         .reports { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; }
-        .report-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
+        .report-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 10px; flex-wrap: wrap; gap: 10px; }
         .report-date { font-size: 1.2em; color: #ffd700; }
-        .report-links a {
-            display: inline-block;
-            padding: 8px 15px;
-            margin-left: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 0.9em;
-        }
+        .report-links a { display: inline-block; padding: 8px 15px; margin-left: 10px; border-radius: 5px; text-decoration: none; color: #fff; font-size: 0.9em; }
         .btn-html { background: linear-gradient(90deg, #11998e, #38ef7d); }
         .btn-csv { background: linear-gradient(90deg, #667eea, #764ba2); }
         .btn-txt { background: linear-gradient(90deg, #fc4a1a, #f7b733); }
-        .report-links a:hover { opacity: 0.8; transform: scale(1.05); }
-        .empty { text-align: center; color: #888; padding: 40px; }
+        .report-links a:hover { opacity: 0.8; }
     </style>
 </head>
 <body>
@@ -53,9 +30,9 @@
             <h1>January 2026</h1>
             <a href="../../" class="back-link">← Back to All Months</a>
         </div>
-        <div class="reports" id="reports">
+        <div class="reports">
             <div class="report-item">
-                <span class="report-date">📅 2026-01-04 (Test Report)</span>
+                <span class="report-date">📅 2026-01-04</span>
                 <div class="report-links">
                     <a href="alwakeel_report_2026-01-04.html" class="btn-html">📊 HTML</a>
                     <a href="alwakeel_execution_2026-01-04.csv" class="btn-csv">📄 CSV</a>
