@@ -1,0 +1,2 @@
+timestamp,symbol,strategy,order_type,trigger_price,execution_price,quantity,order_value,order_id,sl_order_id,status,pnl,remarks
+2026-01-09 11:04:09,PGEL,SUPPORT,BUY,615.0,606.05,100,60605.0,260109190669338,,PLACED,0,Support level hit
