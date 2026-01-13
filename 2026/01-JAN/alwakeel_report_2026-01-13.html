@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlWakeel Bot - Daily Report | 2026-01-13</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .header .logo {
+            font-size: 10em;
+            animation: rocket-fire 0.8s ease-in-out infinite;
+            display: inline-block;
+            line-height: 1;
+        }
+        .header .logo .lightning {
+            display: inline-block;
+            animation: lightning-flash 0.5s ease-in-out infinite;
+        }
+        .header .logo .rocket {
+            display: inline-block;
+            animation: rocket-boost 0.8s ease-in-out infinite;
+        }
+        @keyframes rocket-fire {
+            0%, 100% { text-shadow: 0 0 30px #ff6b35, 0 0 60px #ff6b35, 0 0 100px #ff4500; }
+            50% { text-shadow: 0 0 50px #ffd700, 0 0 100px #ff6b35, 0 0 150px #ff4500; }
+        }
+        @keyframes lightning-flash {
+            0%, 100% { opacity: 1; text-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff; }
+            50% { opacity: 0.7; text-shadow: 0 0 40px #fff700, 0 0 80px #00d4ff, 0 0 120px #00d4ff; }
+        }
+        @keyframes rocket-boost {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px) translateX(15px); }
+        }
+        .header h1 { 
+            font-size: 2.5em; 
+            background: linear-gradient(90deg, #ff6b35, #ffd700, #ff6b35);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+        .header .tagline { color: #ff6b35; font-size: 1em; margin-top: 5px; letter-spacing: 3px; text-transform: uppercase; }
+        .header .date { color: #888; font-size: 1.2em; margin-top: 15px; }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .card .icon { font-size: 2em; margin-bottom: 10px; }
+        .card .value { font-size: 2em; font-weight: bold; }
+        .card .label { color: #888; margin-top: 5px; }
+        .card.profit .value { color: #00ff88; }
+        .card.loss .value { color: #ff4757; }
+        .card.buy .value { color: #3a7bd5; }
+        .card.sell .value { color: #ffa502; }
+        .strategies {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .strategy-pill {
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+        .strategy-pill.support { background: linear-gradient(90deg, #11998e, #38ef7d); }
+        .strategy-pill.breakout { background: linear-gradient(90deg, #fc4a1a, #f7b733); }
+        .strategy-pill.momentum { background: linear-gradient(90deg, #667eea, #764ba2); }
+        .strategy-pill.rocket { background: linear-gradient(90deg, #e74c3c, #c0392b); }
+        .strategy-pill.trendride { background: linear-gradient(90deg, #00b894, #00cec9); }
+        .table-container {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        table { width: 100%; border-collapse: collapse; }
+        th {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+        }
+        td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        tr:hover { background: rgba(255,255,255,0.03); }
+        .badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        .badge.buy { background: #3a7bd5; }
+        .badge.sell { background: #ffa502; color: #000; }
+        .badge.support { background: #11998e; }
+        .badge.breakout { background: #fc4a1a; }
+        .badge.momentum { background: #667eea; }
+        .badge.trendride { background: #00b894; }
+        .badge.placed { background: #00d2ff; color: #000; }
+        .badge.triggered { background: #ff4757; }
+        .pnl-positive { color: #00ff88; font-weight: bold; }
+        .pnl-negative { color: #ff4757; font-weight: bold; }
+        .pnl-zero { color: #888; }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo"><span class="lightning">⚡</span><span class="rocket">🚀</span></div>
+            <h1>AlWakeel Bot</h1>
+            <div class="tagline">Automated Trading Engine</div>
+            <div class="date">📅 Tuesday, January 13, 2026</div>
+        </div>
+        
+        <div class="cards">
+            <div class="card buy">
+                <div class="icon">📈</div>
+                <div class="value">40</div>
+                <div class="label">Buy Orders</div>
+            </div>
+            <div class="card sell">
+                <div class="icon">📉</div>
+                <div class="value">0</div>
+                <div class="label">Sell Orders (SL Hit)</div>
+            </div>
+            <div class="card">
+                <div class="icon">💰</div>
+                <div class="value">₹1.62L</div>
+                <div class="label">MTF Margin (30%)</div>
+            </div>
+            <div class="card profit">
+                <div class="icon">📊</div>
+                <div class="value">+₹0</div>
+                <div class="label">Realized P&L</div>
+            </div>
+        </div>
+        
+        <div class="strategies">
+            <div class="strategy-pill support">🎯 SUPPORT: 0</div>
+            <div class="strategy-pill breakout">🚀 BREAKOUT: 0</div>
+            <div class="strategy-pill momentum">⚡ MOMENTUM: 40</div>
+            <div class="strategy-pill rocket">🚀 ROCKET: 0</div>
+            <div class="strategy-pill trendride">🏄 TRENDRIDE: 0</div>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Symbol</th>
+                        <th>Strategy</th>
+                        <th>Type</th>
+                        <th>Trigger</th>
+                        <th>Executed</th>
+                        <th>Qty</th>
+                        <th>Value</th>
+                        <th>Status</th>
+                        <th>P&L</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>09:37:24</td>
+                        <td><strong>ASIANPAINT</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹2,889.85</td>
+                        <td>₹2,889.85</td>
+                        <td>20</td>
+                        <td>₹57,797</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:25</td>
+                        <td><strong>AXISBANK</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹1,275.12</td>
+                        <td>₹1,275.12</td>
+                        <td>20</td>
+                        <td>₹25,502</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:26</td>
+                        <td><strong>BEL</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹418.33</td>
+                        <td>₹418.33</td>
+                        <td>20</td>
+                        <td>₹8,367</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:27</td>
+                        <td><strong>HDFCBANK</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹938.70</td>
+                        <td>₹938.70</td>
+                        <td>20</td>
+                        <td>₹18,774</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:28</td>
+                        <td><strong>HINDALCO</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹918.72</td>
+                        <td>₹918.72</td>
+                        <td>20</td>
+                        <td>₹18,374</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:29</td>
+                        <td><strong>JSWSTEEL</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹1,180.85</td>
+                        <td>₹1,180.85</td>
+                        <td>20</td>
+                        <td>₹23,617</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:30</td>
+                        <td><strong>SBIN</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹1,013.69</td>
+                        <td>₹1,013.69</td>
+                        <td>20</td>
+                        <td>₹20,274</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:31</td>
+                        <td><strong>TECHM</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹1,588.42</td>
+                        <td>₹1,588.42</td>
+                        <td>20</td>
+                        <td>₹31,768</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:32</td>
+                        <td><strong>ACC</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹1,708.20</td>
+                        <td>₹1,708.20</td>
+                        <td>20</td>
+                        <td>₹34,164</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:33</td>
+                        <td><strong>ANANDRATHI</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹3,152.43</td>
+                        <td>₹3,152.43</td>
+                        <td>20</td>
+                        <td>₹63,049</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:34</td>
+                        <td><strong>ANURAS</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹1,313.39</td>
+                        <td>₹1,313.39</td>
+                        <td>20</td>
+                        <td>₹26,268</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:35</td>
+                        <td><strong>BHARATFORG</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹1,454.99</td>
+                        <td>₹1,454.99</td>
+                        <td>20</td>
+                        <td>₹29,100</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:37</td>
+                        <td><strong>CANFINHOME</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹891.27</td>
+                        <td>₹891.27</td>
+                        <td>20</td>
+                        <td>₹17,825</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:38</td>
+                        <td><strong>CAPILLARY</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹631.23</td>
+                        <td>₹631.23</td>
+                        <td>20</td>
+                        <td>₹12,625</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:39</td>
+                        <td><strong>CARBORUNIV</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹805.17</td>
+                        <td>₹805.17</td>
+                        <td>20</td>
+                        <td>₹16,103</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:40</td>
+                        <td><strong>CENTURYPLY</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹762.37</td>
+                        <td>₹762.37</td>
+                        <td>20</td>
+                        <td>₹15,247</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:41</td>
+                        <td><strong>CHALET</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹865.21</td>
+                        <td>₹865.21</td>
+                        <td>20</td>
+                        <td>₹17,304</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:42</td>
+                        <td><strong>CLEAN</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹854.65</td>
+                        <td>₹854.65</td>
+                        <td>20</td>
+                        <td>₹17,093</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:43</td>
+                        <td><strong>CONCOR</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹512.80</td>
+                        <td>₹512.80</td>
+                        <td>20</td>
+                        <td>₹10,256</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>09:37:44</td>
+                        <td><strong>COROMANDEL</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹2,298.33</td>
+                        <td>₹2,298.33</td>
+                        <td>20</td>
+                        <td>₹45,967</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:15:54</td>
+                        <td><strong>CRISIL</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹4,758.29</td>
+                        <td>₹4,758.29</td>
+                        <td>1</td>
+                        <td>₹4,758</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:15:55</td>
+                        <td><strong>DALBHARAT</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹2,074.31</td>
+                        <td>₹2,074.31</td>
+                        <td>1</td>
+                        <td>₹2,074</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:15:55</td>
+                        <td><strong>FLUOROCHEM</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹3,468.42</td>
+                        <td>₹3,468.42</td>
+                        <td>1</td>
+                        <td>₹3,468</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:15:56</td>
+                        <td><strong>GHCL</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹548.47</td>
+                        <td>₹548.47</td>
+                        <td>1</td>
+                        <td>₹548</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:15:56</td>
+                        <td><strong>HCG</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹643.89</td>
+                        <td>₹643.89</td>
+                        <td>1</td>
+                        <td>₹644</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:15:57</td>
+                        <td><strong>JAINREC</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹406.47</td>
+                        <td>₹406.47</td>
+                        <td>1</td>
+                        <td>₹406</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:15:57</td>
+                        <td><strong>KPIL</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹1,121.06</td>
+                        <td>₹1,121.06</td>
+                        <td>1</td>
+                        <td>₹1,121</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:15:58</td>
+                        <td><strong>LGEINDIA</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹1,397.99</td>
+                        <td>₹1,397.99</td>
+                        <td>1</td>
+                        <td>₹1,398</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:15:58</td>
+                        <td><strong>MARICO</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹754.95</td>
+                        <td>₹754.95</td>
+                        <td>1</td>
+                        <td>₹755</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:15:59</td>
+                        <td><strong>MPHASIS</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹2,839.43</td>
+                        <td>₹2,839.43</td>
+                        <td>1</td>
+                        <td>₹2,839</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:16:00</td>
+                        <td><strong>MUTHOOTFIN</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹3,903.79</td>
+                        <td>₹3,903.79</td>
+                        <td>1</td>
+                        <td>₹3,904</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:16:00</td>
+                        <td><strong>PVRINOX</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹998.99</td>
+                        <td>₹998.99</td>
+                        <td>1</td>
+                        <td>₹999</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:16:01</td>
+                        <td><strong>SHYAMMETL</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹806.57</td>
+                        <td>₹806.57</td>
+                        <td>1</td>
+                        <td>₹807</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:16:01</td>
+                        <td><strong>SKFINDIA</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹1,843.53</td>
+                        <td>₹1,843.53</td>
+                        <td>1</td>
+                        <td>₹1,844</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:16:02</td>
+                        <td><strong>STUDDS</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹524.81</td>
+                        <td>₹524.81</td>
+                        <td>1</td>
+                        <td>₹525</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:16:02</td>
+                        <td><strong>STYRENIX</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹1,961.01</td>
+                        <td>₹1,961.01</td>
+                        <td>1</td>
+                        <td>₹1,961</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:16:03</td>
+                        <td><strong>TATACOMM</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹1,741.88</td>
+                        <td>₹1,741.88</td>
+                        <td>1</td>
+                        <td>₹1,742</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:16:03</td>
+                        <td><strong>THELEELA</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹434.77</td>
+                        <td>₹434.77</td>
+                        <td>1</td>
+                        <td>₹435</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:16:04</td>
+                        <td><strong>TMCV</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹428.54</td>
+                        <td>₹428.54</td>
+                        <td>1</td>
+                        <td>₹429</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                    <tr >
+                        <td>11:16:04</td>
+                        <td><strong>TRAVELFOOD</strong></td>
+                        <td><span class="badge momentum">MOMENTUM</span></td>
+                        <td><span class="badge buy">BUY</span></td>
+                        <td>₹1,160.92</td>
+                        <td>₹1,160.92</td>
+                        <td>1</td>
+                        <td>₹1,161</td>
+                        <td><span class="badge placed">PLACED</span></td>
+                        <td class="pnl-zero">-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>Generated by AlWakeel Bot • Zerodha Kite Connect</p>
+            <p>Report Time: 2026-01-13 15:35:01 IST</p>
+        </div>
+    </div>
+</body>
+</html>
