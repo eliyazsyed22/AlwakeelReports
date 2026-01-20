@@ -1,0 +1,2 @@
+timestamp,symbol,strategy,order_type,trigger_price,execution_price,quantity,order_value,order_id,sl_order_id,status,pnl,remarks
+2026-01-20 13:32:09,ASTRAL,SUPPORT,BUY,1400.0,1400.0,50,70000.0,260120191396177,,PLACED,0,Support level hit
