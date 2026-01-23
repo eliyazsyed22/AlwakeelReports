@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlWakeel Bot - Daily Report | 2026-01-08</title>
+    <title>AlWakeel Bot - Daily Report | 2026-01-23</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -129,6 +129,9 @@
         .badge.trendride { background: #00b894; }
         .badge.placed { background: #00d2ff; color: #000; }
         .badge.triggered { background: #ff4757; }
+        .badge.open { background: #ffa502; color: #000; }
+        .badge.closed { background: #ff4757; }
+        .badge.rocket-momentum { background: linear-gradient(90deg, #e74c3c, #c0392b); }
         .pnl-positive { color: #00ff88; font-weight: bold; }
         .pnl-negative { color: #ff4757; font-weight: bold; }
         .pnl-zero { color: #888; }
@@ -146,35 +149,40 @@
             <div class="logo"><span class="lightning">⚡</span><span class="rocket">🚀</span></div>
             <h1>AlWakeel Bot</h1>
             <div class="tagline">Automated Trading Engine</div>
-            <div class="date">📅 Thursday, January 08, 2026</div>
+            <div class="date">📅 Friday, January 23, 2026</div>
         </div>
         
         <div class="cards">
             <div class="card buy">
                 <div class="icon">📈</div>
-                <div class="value">2</div>
-                <div class="label">Buy Orders</div>
+                <div class="value">11</div>
+                <div class="label">Total Trades</div>
             </div>
             <div class="card sell">
-                <div class="icon">📉</div>
+                <div class="icon">✅</div>
+                <div class="value">11</div>
+                <div class="label">Closed</div>
+            </div>
+            <div class="card">
+                <div class="icon">⏳</div>
                 <div class="value">0</div>
-                <div class="label">Sell Orders (SL Hit)</div>
+                <div class="label">Open</div>
             </div>
             <div class="card">
                 <div class="icon">💰</div>
-                <div class="value">₹0.24L</div>
+                <div class="value">₹1.72L</div>
                 <div class="label">MTF Margin (30%)</div>
             </div>
-            <div class="card profit">
+            <div class="card loss">
                 <div class="icon">📊</div>
-                <div class="value">+₹0</div>
-                <div class="label">Realized P&L</div>
+                <div class="value">-₹8,460</div>
+                <div class="label">Total P&L</div>
             </div>
         </div>
         
         <div class="strategies">
             <div class="strategy-pill support">🎯 SUPPORT: 1</div>
-            <div class="strategy-pill breakout">🚀 BREAKOUT: 1</div>
+            <div class="strategy-pill breakout">🚀 BREAKOUT: 0</div>
             <div class="strategy-pill momentum">⚡ MOMENTUM: 0</div>
             <div class="strategy-pill rocket">🚀 ROCKET: 0</div>
             <div class="strategy-pill trendride">🏄 TRENDRIDE: 0</div>
@@ -184,42 +192,138 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Time</th>
                         <th>Symbol</th>
                         <th>Strategy</th>
-                        <th>Type</th>
-                        <th>Trigger</th>
-                        <th>Executed</th>
+                        <th>Entry Time</th>
+                        <th>Entry Price</th>
+                        <th>Exit Time</th>
+                        <th>Exit Price</th>
                         <th>Qty</th>
-                        <th>Value</th>
                         <th>Status</th>
                         <th>P&L</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr >
-                        <td>09:20:21</td>
-                        <td><strong>ANANTRAJ</strong></td>
-                        <td><span class="badge breakout">BREAKOUT</span></td>
-                        <td><span class="badge buy">BUY</span></td>
-                        <td>₹602.00</td>
-                        <td>₹602.00</td>
-                        <td>30</td>
-                        <td>₹18,060</td>
-                        <td><span class="badge placed">PLACED</span></td>
-                        <td class="pnl-zero">-</td>
+                        <td><strong>COLPAL</strong></td>
+                        <td><span class="badge kite-manual">KITE_MANUAL</span></td>
+                        <td>04:07:18</td>
+                        <td>₹2,176.20</td>
+                        <td>-</td>
+                        <td>₹2,167.80</td>
+                        <td>10</td>
+                        <td><span class="badge open">OPEN</span></td>
+                        <td class="pnl-negative">-₹84</td>
                     </tr>
                     <tr >
-                        <td>11:02:36</td>
-                        <td><strong>PGEL</strong></td>
+                        <td><strong>FORTIS</strong></td>
+                        <td><span class="badge kite-manual">KITE_MANUAL</span></td>
+                        <td>04:07:18</td>
+                        <td>₹856.30</td>
+                        <td>-</td>
+                        <td>₹855.60</td>
+                        <td>10</td>
+                        <td><span class="badge open">OPEN</span></td>
+                        <td class="pnl-negative">-₹7</td>
+                    </tr>
+                    <tr >
+                        <td><strong>GESHIP</strong></td>
+                        <td><span class="badge kite-manual">KITE_MANUAL</span></td>
+                        <td>05:08:36</td>
+                        <td>₹1,113.60</td>
+                        <td>-</td>
+                        <td>₹1,109.90</td>
+                        <td>10</td>
+                        <td><span class="badge open">OPEN</span></td>
+                        <td class="pnl-negative">-₹37</td>
+                    </tr>
+                    <tr >
+                        <td><strong>SHRIRAMFIN</strong></td>
+                        <td><span class="badge kite-manual">KITE_MANUAL</span></td>
+                        <td>05:08:36</td>
+                        <td>₹1,006.20</td>
+                        <td>-</td>
+                        <td>₹1,003.95</td>
+                        <td>10</td>
+                        <td><span class="badge open">OPEN</span></td>
+                        <td class="pnl-negative">-₹22</td>
+                    </tr>
+                    <tr >
+                        <td><strong>SIEMENS</strong></td>
+                        <td><span class="badge kite-manual">KITE_MANUAL</span></td>
+                        <td>05:08:36</td>
+                        <td>₹2,924.10</td>
+                        <td>-</td>
+                        <td>₹2,902.80</td>
+                        <td>10</td>
+                        <td><span class="badge open">OPEN</span></td>
+                        <td class="pnl-negative">-₹213</td>
+                    </tr>
+                    <tr >
+                        <td><strong>TATACONSUM</strong></td>
+                        <td><span class="badge kite-manual">KITE_MANUAL</span></td>
+                        <td>05:08:36</td>
+                        <td>₹1,184.30</td>
+                        <td>-</td>
+                        <td>₹1,170.80</td>
+                        <td>10</td>
+                        <td><span class="badge open">OPEN</span></td>
+                        <td class="pnl-negative">-₹135</td>
+                    </tr>
+                    <tr >
+                        <td><strong>VENKEYS</strong></td>
+                        <td><span class="badge kite-manual">KITE_MANUAL</span></td>
+                        <td>05:08:36</td>
+                        <td>₹1,503.70</td>
+                        <td>-</td>
+                        <td>₹1,492.00</td>
+                        <td>10</td>
+                        <td><span class="badge open">OPEN</span></td>
+                        <td class="pnl-negative">-₹117</td>
+                    </tr>
+                    <tr >
+                        <td><strong>KPRMILL</strong></td>
+                        <td><span class="badge kite-manual">KITE_MANUAL</span></td>
+                        <td>08:27:29</td>
+                        <td>₹854.75</td>
+                        <td>-</td>
+                        <td>₹855.00</td>
+                        <td>1</td>
+                        <td><span class="badge open">OPEN</span></td>
+                        <td class="pnl-positive">+₹0</td>
+                    </tr>
+                    <tr >
+                        <td><strong>SBICARD</strong></td>
                         <td><span class="badge support">SUPPORT</span></td>
-                        <td><span class="badge buy">BUY</span></td>
-                        <td>₹615.00</td>
-                        <td>₹614.65</td>
+                        <td>09:17:14</td>
+                        <td>₹782.85</td>
+                        <td>-</td>
+                        <td>₹782.10</td>
                         <td>100</td>
-                        <td>₹61,465</td>
-                        <td><span class="badge placed">PLACED</span></td>
-                        <td class="pnl-zero">-</td>
+                        <td><span class="badge open">OPEN</span></td>
+                        <td class="pnl-negative">-₹75</td>
+                    </tr>
+                    <tr >
+                        <td><strong>ASTRAL</strong></td>
+                        <td><span class="badge kite-manual">KITE_MANUAL</span></td>
+                        <td>09:24:57</td>
+                        <td>₹1,392.00</td>
+                        <td>-</td>
+                        <td>₹1,387.30</td>
+                        <td>200</td>
+                        <td><span class="badge open">OPEN</span></td>
+                        <td class="pnl-negative">-₹940</td>
+                    </tr>
+                    <tr >
+                        <td><strong>PGEL</strong></td>
+                        <td><span class="badge kite-manual">KITE_MANUAL</span></td>
+                        <td>10:04:59</td>
+                        <td>₹547.60</td>
+                        <td>-</td>
+                        <td>₹513.45</td>
+                        <td>200</td>
+                        <td><span class="badge open">OPEN</span></td>
+                        <td class="pnl-negative">-₹6,830</td>
                     </tr>
                 </tbody>
             </table>
@@ -227,7 +331,7 @@
         
         <div class="footer">
             <p>Generated by AlWakeel Bot • Zerodha Kite Connect</p>
-            <p>Report Time: 2026-01-08 15:35:01 IST</p>
+            <p>Report Time: 2026-01-23 15:35:01 IST</p>
         </div>
     </div>
 </body>
