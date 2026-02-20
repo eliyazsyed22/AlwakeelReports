@@ -1,0 +1,6 @@
+timestamp,symbol,strategy,order_type,trigger_price,execution_price,quantity,order_value,order_id,sl_order_id,status,pnl,remarks
+2026-02-20 09:30:03,HEXT,SELL_ROCKET,BUY,532.66,524.2,50,26210.0,260220190167115,,PLACED,0,Sell Rocket intraday breakdown (SHORT)
+2026-02-20 09:30:04,AETHER,SELL_ROCKET,BUY,953.95,945.9,50,47295.0,260220190167914,,PLACED,0,Sell Rocket intraday breakdown (SHORT)
+2026-02-20 09:30:05,MPHASIS,SELL_ROCKET,BUY,2337.51,2317.5,50,115875.0,260220190168292,,PLACED,0,Sell Rocket intraday breakdown (SHORT)
+2026-02-20 09:30:11,AFFLE,SELL_ROCKET,BUY,1481.13,1466.4,50,73320.0,260220190170720,,PLACED,0,Sell Rocket intraday breakdown (SHORT)
+2026-02-20 09:30:14,ROUTE,SELL_ROCKET,BUY,520.82,514.35,50,25717.5,260220190171441,,PLACED,0,Sell Rocket intraday breakdown (SHORT)
