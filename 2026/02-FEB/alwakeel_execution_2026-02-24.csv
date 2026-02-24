@@ -1,2 +1,1 @@
 timestamp,symbol,strategy,order_type,trigger_price,execution_price,quantity,order_value,order_id,sl_order_id,status,pnl,remarks
-2026-02-13 09:35:42,WIPRO,SUPPORT,BUY,235.0,211.59,300,63477.0,260213190259582,,PLACED,0,Support level hit
